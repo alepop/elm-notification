@@ -33,7 +33,6 @@ var _alepop$elm_notification$Native_Notification = function() {
             return Task.nativeBinding(function(callback) {
                 switch (Notification.permission) {
                     case status.Granted:
-                        console.warn(data);
                         new Notification(data.title, data.options);
                         return callback(Task.succeed(_elm_lang$core$Native_Utils.Tuple0));
                     case status.Denied:
