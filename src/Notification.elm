@@ -5,6 +5,7 @@ module Notification
         , requestPermission
         , Notification
         , Options
+        , defaultOptions
         , Error
         , create
         )
@@ -14,7 +15,10 @@ module Notification
 @docs Permission, getPermission, requestPermission
 
 # Notification
-@docs Notification, Options, Error, create
+@docs Notification, Options, defaultOptions, create
+
+# Error
+@docs Error
 -}
 
 import Native.Notification
@@ -67,8 +71,39 @@ type alias Notification =
     that you want to apply to the notification.
 -}
 type alias Options =
-    { body : String
-    , icon : String
+    { dir : String
+    , lang : Maybe String
+    , badge : Maybe String
+    , body : Maybe String
+    , tag : Maybe String
+    , icon : Maybe String
+    , image : Maybe String
+    , vibrate : Maybe (List Int)
+    , renotify : Bool
+    }
+
+
+{-| Default options
+
+    options: Options
+    options =
+      { defaultOptions | body = Just("Notification text")}
+
+    notificationData: Notification
+    notificationData =
+      { title = "Hello!", options = options}
+-}
+defaultOptions : Options
+defaultOptions =
+    { dir = "auto"
+    , lang = Nothing
+    , badge = Nothing
+    , body = Nothing
+    , tag = Nothing
+    , icon = Nothing
+    , image = Nothing
+    , vibrate = Nothing
+    , renotify = False
     }
 
 
