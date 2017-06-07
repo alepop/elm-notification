@@ -21,8 +21,8 @@ module Notification
 @docs Error
 -}
 
-import Native.Notification
 import Task exposing (Task)
+import Native.Notification
 
 
 -- Permission
