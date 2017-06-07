@@ -3,4 +3,4 @@ index.html
 elm-stuff/
 # elm-repl generated files
 repl-temp-*
-node-modules/
+node_modules/

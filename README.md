@@ -5,5 +5,4 @@ Elm package. To use it, you can install it by one of this tools:
  - [NoRedInk/elm-ops-tooling](https://github.com/NoRedInk/elm-ops-tooling).
 
  ## TODO:
- * Add example
  * Optional attributes

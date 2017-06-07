@@ -3,7 +3,7 @@ module Simple exposing (main)
 import Html exposing (Html, button, div, h1, text)
 import Html.Events exposing (onClick)
 import Json.Decode exposing (Value)
-import Task
+import Task exposing (Task, perform, attempt)
 import Notification exposing (Error, Notification, Permission, create, defaultOptions, requestPermission)
 
 
@@ -14,12 +14,12 @@ type Msg
 
 
 type alias Model =
-    ()
+    String
 
 
 init : ( Model, Cmd Msg )
 init =
-    ( (), Task.perform RequestPermissionResult requestPermission )
+    ( "Asking for notification permission...", perform RequestPermissionResult requestPermission )
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -30,32 +30,25 @@ update msg model =
                 cmd =
                     Notification "Here is you info!" { defaultOptions | body = Just ("Notification text") }
                         |> create
-                        |> Task.attempt NotificationResult
+                        |> attempt NotificationResult
             in
                 ( model, cmd )
 
         NotificationResult (Err error) ->
-            let
-                _ =
-                    Debug.log "Error" (toString error)
-            in
-                model ! []
+            ("Notification failed " ++ (toString error)) ! []
 
         NotificationResult (Ok _) ->
-            model ! []
+            ("Notification success!") ! []
 
         RequestPermissionResult permission ->
-            let
-                _ =
-                    Debug.log "permission" (toString permission)
-            in
-                model ! []
+            ("Permission result: " ++ (toString permission)) ! []
 
 
 view : Model -> Html Msg
 view model =
     div []
         [ h1 [] [ text "Simple notification example" ]
+        , div [] [ text ("Debug information: " ++ model) ]
         , button [ onClick SpawnInfo ] [ text "Spawn info" ]
         ]
 
