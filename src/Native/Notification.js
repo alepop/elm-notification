@@ -1,4 +1,4 @@
-var _alepop$elm_notification$Native_Notification = function() {
+var _z_alepop$elm_notification$Native_Notification = function() {
 
     var Task = _elm_lang$core$Native_Scheduler;
 
@@ -37,8 +37,8 @@ var _alepop$elm_notification$Native_Notification = function() {
                         return data[key] = _elm_lang$core$Native_List.toArray(data[key]._0)
                     }
                     return data[key] = data[key]._0;
-                } 
-            } 
+                }
+            }
         });
         return data;
     }
@@ -51,7 +51,7 @@ var _alepop$elm_notification$Native_Notification = function() {
 
         requestPermission: Task.nativeBinding(function(callback) {
             Notification.requestPermission(function(result) {
-                callback(Task.succeed(permission(result)));
+                callback(Task.succeed(permission()));
            })
         }),
 

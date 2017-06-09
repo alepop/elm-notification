@@ -1,0 +1,19 @@
+{
+    "version": "1.0.0",
+    "summary": "Simple example of elm notification",
+    "repository": "https://github.com/alepop/elm-notification.git",
+    "license": "BSD3",
+    "source-directories": [
+        "."
+    ],
+    "exposed-modules": [],
+    "dependencies": {
+        "elm-lang/core": "5.1.1 <= v < 6.0.0",
+        "elm-lang/html": "2.0.0 <= v < 3.0.0",
+        "z_alepop/elm-notification": "1.0.0 <= v < 2.0.0"
+    },
+    "dependency-sources": {
+        "z_alepop/elm-notification": "../.."
+    },
+    "elm-version": "0.18.0 <= v < 0.19.0"
+}
